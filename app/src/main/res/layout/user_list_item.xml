@@ -5,11 +5,11 @@
 
         <variable
             name="user"
-            type="com.example.testapplication2.User" />
+            type="com.example.testapplication2.models.User" />
 
         <variable
             name="clickHandler"
-            type="com.example.testapplication2.UsersListAdapter.OnItemClickListener" />
+            type="com.example.testapplication2.adapters.UsersListAdapter" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

@@ -1,4 +1,4 @@
-package com.example.testapplication2
+package com.example.testapplication2.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,11 +8,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.testapplication2.viewmodels.MainActivityViewModel
+import com.example.testapplication2.R
+import com.example.testapplication2.models.User
+import com.example.testapplication2.adapters.UsersListAdapter
 import com.example.testapplication2.databinding.ActivityMainBinding
 
-import kotlinx.android.synthetic.main.activity_main.*
-
-class MainActivity : AppCompatActivity(), UsersListAdapter.OnUserItemClickListener {
+class MainActivity : AppCompatActivity(),
+    UsersListAdapter.OnUserItemClickListener {
 
     private lateinit var activityMainBinding: ActivityMainBinding
     private lateinit var viewModel: MainActivityViewModel
@@ -21,10 +24,13 @@ class MainActivity : AppCompatActivity(), UsersListAdapter.OnUserItemClickListen
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        activityMainBinding = DataBindingUtil.setContentView(this,
+            R.layout.activity_main
+        )
 
         activityMainBinding.content.rv.layoutManager = LinearLayoutManager(this)
-        usersListAdapter = UsersListAdapter(this)
+        usersListAdapter =
+            UsersListAdapter(this)
 
         activityMainBinding.content.rv.adapter = usersListAdapter
 

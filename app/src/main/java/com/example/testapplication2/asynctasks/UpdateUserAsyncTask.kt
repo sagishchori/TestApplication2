@@ -1,6 +1,8 @@
-package com.example.testapplication2
+package com.example.testapplication2.asynctasks
 
 import android.os.AsyncTask
+import com.example.testapplication2.models.User
+import com.example.testapplication2.database.UserDao
 
 class UpdateUserAsyncTask(var userDao: UserDao): AsyncTask<User, Void, Void>() {
 

@@ -1,14 +1,14 @@
-package com.example.testapplication2
+package com.example.testapplication2.activities
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.example.testapplication2.viewmodels.EditUserActivityViewModel
+import com.example.testapplication2.R
+import com.example.testapplication2.models.User
 import com.example.testapplication2.databinding.ActivityEditUserBinding
 
 class EditUserActivity: AppCompatActivity() {
@@ -21,9 +21,13 @@ class EditUserActivity: AppCompatActivity() {
 
         viewModel = ViewModelProviders.of(this)[EditUserActivityViewModel::class.java]
 
-        activityEditUserBinding = DataBindingUtil.setContentView(this, R.layout.activity_edit_user)
+        activityEditUserBinding = DataBindingUtil.setContentView(this,
+            R.layout.activity_edit_user
+        )
 
-        if (intent.hasExtra(EDIT_USER) && intent.extras.getBoolean(EDIT_USER)) {
+        if (intent.hasExtra(EDIT_USER) && intent.extras.getBoolean(
+                EDIT_USER
+            )) {
             viewModel.setUserData(intent.extras.getParcelable(USER))
             viewModel.setIsAddUser(false)
         } else {
@@ -34,6 +38,13 @@ class EditUserActivity: AppCompatActivity() {
         activityEditUserBinding.user = viewModel.getUser()?.value
         activityEditUserBinding.viewModel = viewModel
 
+        setTextWatcher()
+    }
+
+    /**
+     * A method to set TextWatcher for User's EditText fields.
+     */
+    private fun setTextWatcher() {
         activityEditUserBinding.name.addTextChangedListener(object: TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 viewModel.getUser()?.value?.name = s.toString()

@@ -1,7 +1,8 @@
-package com.example.testapplication2
+package com.example.testapplication2.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.testapplication2.models.User
 
 @Dao
 interface UserDao {

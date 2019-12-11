@@ -1,4 +1,4 @@
-package com.example.testapplication2
+package com.example.testapplication2.viewmodels
 
 import android.app.Application
 import android.content.Context
@@ -7,9 +7,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.example.testapplication2.EditUserActivity.Companion.ADD_USER
-import com.example.testapplication2.EditUserActivity.Companion.EDIT_USER
-import com.example.testapplication2.EditUserActivity.Companion.USER
+import com.example.testapplication2.R
+import com.example.testapplication2.models.User
+import com.example.testapplication2.repositories.UserRepository
+import com.example.testapplication2.activities.EditUserActivity
+import com.example.testapplication2.activities.EditUserActivity.Companion.ADD_USER
+import com.example.testapplication2.activities.EditUserActivity.Companion.EDIT_USER
+import com.example.testapplication2.activities.EditUserActivity.Companion.USER
 
 class MainActivityViewModel: AndroidViewModel, View.OnClickListener {
 
@@ -17,7 +21,8 @@ class MainActivityViewModel: AndroidViewModel, View.OnClickListener {
     private var userRepository: UserRepository
 
     constructor(application: Application) : super(application) {
-        userRepository = UserRepository(application)
+        userRepository =
+            UserRepository(application)
         usersList = userRepository.getAllUsers()
     }
 

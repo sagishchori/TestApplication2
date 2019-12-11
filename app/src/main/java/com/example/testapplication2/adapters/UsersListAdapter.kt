@@ -1,8 +1,9 @@
-package com.example.testapplication2
+package com.example.testapplication2.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.testapplication2.models.User
 import com.example.testapplication2.databinding.UserListItemBinding
 
 class UsersListAdapter(val onUserItemClickListener: OnUserItemClickListener): RecyclerView.Adapter<UsersListAdapter.UserViewHolder>() {
@@ -14,7 +15,9 @@ class UsersListAdapter(val onUserItemClickListener: OnUserItemClickListener): Re
 
         val userListItemBinding = UserListItemBinding.inflate(inflater)
 
-        return UserViewHolder(userListItemBinding)
+        return UserViewHolder(
+            userListItemBinding
+        )
     }
 
     override fun getItemCount(): Int {
@@ -49,7 +52,10 @@ class UsersListAdapter(val onUserItemClickListener: OnUserItemClickListener): Re
         }
 
         fun setItemClickHandler(onUserItemClickListener: OnUserItemClickListener) {
-            binding.clickHandler = OnItemClickListener(onUserItemClickListener)
+            binding.clickHandler =
+                OnItemClickListener(
+                    onUserItemClickListener
+                )
         }
     }
 

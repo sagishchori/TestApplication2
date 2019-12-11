@@ -1,11 +1,13 @@
-package com.example.testapplication2
+package com.example.testapplication2.viewmodels
 
 import android.app.Application
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.testapplication2.R
+import com.example.testapplication2.models.User
+import com.example.testapplication2.repositories.UserRepository
 
 class EditUserActivityViewModel : AndroidViewModel, View.OnClickListener {
 
@@ -14,7 +16,8 @@ class EditUserActivityViewModel : AndroidViewModel, View.OnClickListener {
     private var isAddUser: MutableLiveData<Boolean> = MutableLiveData()
 
     constructor(application: Application) : super(application) {
-        userRepository = UserRepository(application)
+        userRepository =
+            UserRepository(application)
     }
 
     fun setUserData(user: User) {

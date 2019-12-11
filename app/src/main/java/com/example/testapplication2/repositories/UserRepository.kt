@@ -1,7 +1,13 @@
-package com.example.testapplication2
+package com.example.testapplication2.repositories
 
 import android.content.Context
 import androidx.lifecycle.LiveData
+import com.example.testapplication2.asynctasks.DeleteUserAsyncTask
+import com.example.testapplication2.asynctasks.InsertUserAsyncTask
+import com.example.testapplication2.asynctasks.UpdateUserAsyncTask
+import com.example.testapplication2.database.UserDao
+import com.example.testapplication2.database.UsersAppDatabase
+import com.example.testapplication2.models.User
 
 class UserRepository {
 

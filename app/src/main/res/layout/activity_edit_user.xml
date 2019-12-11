@@ -5,18 +5,18 @@
 
         <variable
             name="user"
-            type="com.example.testapplication2.User" />
+            type="com.example.testapplication2.models.User" />
 
         <variable
             name="viewModel"
-            type="com.example.testapplication2.EditUserActivityViewModel" />
+            type="com.example.testapplication2.viewmodels.EditUserActivityViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".EditUserActivity">
+        tools:context=".activities.EditUserActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
