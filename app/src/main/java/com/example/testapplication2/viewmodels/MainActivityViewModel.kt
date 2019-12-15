@@ -15,14 +15,13 @@ import com.example.testapplication2.activities.EditUserActivity.Companion.ADD_US
 import com.example.testapplication2.activities.EditUserActivity.Companion.EDIT_USER
 import com.example.testapplication2.activities.EditUserActivity.Companion.USER
 
-class MainActivityViewModel: AndroidViewModel, View.OnClickListener {
+class MainActivityViewModel(application: Application) : AndroidViewModel(application), View.OnClickListener {
 
     private var usersList: LiveData<List<User>>
     private var userRepository: UserRepository
 
-    constructor(application: Application) : super(application) {
-        userRepository =
-            UserRepository(application)
+    init {
+        userRepository = UserRepository(application)
         usersList = userRepository.getAllUsers()
     }
 
@@ -54,7 +53,7 @@ class MainActivityViewModel: AndroidViewModel, View.OnClickListener {
                 // Start new activity for adding User
                 Toast.makeText(v.context, "On ADD USER clicked", Toast.LENGTH_LONG).show()
 
-                var intent = Intent(v.context, EditUserActivity::class.java)
+                val intent = Intent(v.context, EditUserActivity::class.java)
                 intent.putExtra(ADD_USER, true)
 
                 v.context.startActivity(intent)
@@ -70,7 +69,7 @@ class MainActivityViewModel: AndroidViewModel, View.OnClickListener {
     fun onUserItemClicked(user: User, context: Context) {
         Toast.makeText(context, "On EDIT USER clicked", Toast.LENGTH_LONG).show()
 
-        var intent = Intent(context, EditUserActivity::class.java)
+        val intent = Intent(context, EditUserActivity::class.java)
         intent.putExtra(EDIT_USER, true)
         intent.putExtra(USER, user)
 

@@ -9,16 +9,11 @@ import com.example.testapplication2.R
 import com.example.testapplication2.models.User
 import com.example.testapplication2.repositories.UserRepository
 
-class EditUserActivityViewModel : AndroidViewModel, View.OnClickListener {
+class EditUserActivityViewModel(application: Application) : AndroidViewModel(application), View.OnClickListener {
 
-    private lateinit var userRepository: UserRepository
+    private var userRepository: UserRepository = UserRepository(application)
     private var user: MutableLiveData<User> = MutableLiveData()
     private var isAddUser: MutableLiveData<Boolean> = MutableLiveData()
-
-    constructor(application: Application) : super(application) {
-        userRepository =
-            UserRepository(application)
-    }
 
     fun setUserData(user: User) {
         this.user.value = user
@@ -49,10 +44,16 @@ class EditUserActivityViewModel : AndroidViewModel, View.OnClickListener {
         this.isAddUser.value = isAddUser
     }
 
+    /**
+     * Insert a User to DataBase
+     */
     private fun insert(user: User) {
         userRepository.insert(user)
     }
 
+    /**
+     * Update a User in the DataBase
+     */
     private fun update(user: User) {
         userRepository.update(user)
     }

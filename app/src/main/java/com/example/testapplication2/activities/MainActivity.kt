@@ -7,6 +7,8 @@ import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.ItemTouchHelper.SimpleCallback
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.testapplication2.viewmodels.MainActivityViewModel
 import com.example.testapplication2.R
@@ -14,8 +16,7 @@ import com.example.testapplication2.models.User
 import com.example.testapplication2.adapters.UsersListAdapter
 import com.example.testapplication2.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(),
-    UsersListAdapter.OnUserItemClickListener {
+class MainActivity : AppCompatActivity(), UsersListAdapter.OnUserItemClickListener {
 
     private lateinit var activityMainBinding: ActivityMainBinding
     private lateinit var viewModel: MainActivityViewModel
@@ -29,8 +30,7 @@ class MainActivity : AppCompatActivity(),
         )
 
         activityMainBinding.content.rv.layoutManager = LinearLayoutManager(this)
-        usersListAdapter =
-            UsersListAdapter(this)
+        usersListAdapter = UsersListAdapter(this)
 
         activityMainBinding.content.rv.adapter = usersListAdapter
 

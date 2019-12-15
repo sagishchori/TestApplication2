@@ -9,7 +9,7 @@
 
         <variable
             name="clickHandler"
-            type="com.example.testapplication2.adapters.UsersListAdapter" />
+            type="com.example.testapplication2.adapters.UsersListAdapter.OnItemClickListener" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

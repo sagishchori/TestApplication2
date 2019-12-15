@@ -7,15 +7,19 @@ import com.example.testapplication2.asynctasks.InsertUserAsyncTask
 import com.example.testapplication2.asynctasks.UpdateUserAsyncTask
 import com.example.testapplication2.database.UserDao
 import com.example.testapplication2.database.UsersAppDatabase
+import com.example.testapplication2.interfaces.ActionDoneInterface
 import com.example.testapplication2.models.User
 
-class UserRepository {
+class UserRepository(context: Context) {
 
     private var userDao: UserDao
     private var appDatabase: UsersAppDatabase
     private var allUsers: LiveData<List<User>>
 
-    constructor(context: Context) {
+    /**
+     * This is called after constructor is called
+     */
+    init {
         appDatabase = UsersAppDatabase.getUserAppDatabase(context)
         userDao = appDatabase.userDao()
         allUsers = userDao.getAllUsers()

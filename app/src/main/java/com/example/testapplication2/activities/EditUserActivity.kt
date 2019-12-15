@@ -21,13 +21,9 @@ class EditUserActivity: AppCompatActivity() {
 
         viewModel = ViewModelProviders.of(this)[EditUserActivityViewModel::class.java]
 
-        activityEditUserBinding = DataBindingUtil.setContentView(this,
-            R.layout.activity_edit_user
-        )
+        activityEditUserBinding = DataBindingUtil.setContentView(this, R.layout.activity_edit_user)
 
-        if (intent.hasExtra(EDIT_USER) && intent.extras.getBoolean(
-                EDIT_USER
-            )) {
+        if (intent.hasExtra(EDIT_USER) && intent.extras.getBoolean(EDIT_USER)) {
             viewModel.setUserData(intent.extras.getParcelable(USER))
             viewModel.setIsAddUser(false)
         } else {

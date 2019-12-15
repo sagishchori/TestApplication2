@@ -39,23 +39,14 @@ class UsersListAdapter(val onUserItemClickListener: OnUserItemClickListener): Re
         notifyDataSetChanged()
     }
 
-    class UserViewHolder : RecyclerView.ViewHolder {
-
-        private var binding: UserListItemBinding
-
-        constructor(binding: UserListItemBinding): super(binding.root) {
-            this.binding = binding
-        }
+    class UserViewHolder(private var binding: UserListItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun setUserData(user: User) {
             binding.user = user
         }
 
         fun setItemClickHandler(onUserItemClickListener: OnUserItemClickListener) {
-            binding.clickHandler =
-                OnItemClickListener(
-                    onUserItemClickListener
-                )
+            binding.clickHandler = OnItemClickListener(onUserItemClickListener)
         }
     }
 
